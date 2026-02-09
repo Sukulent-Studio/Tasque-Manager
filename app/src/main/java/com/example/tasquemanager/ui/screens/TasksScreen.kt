@@ -42,6 +42,9 @@ fun TasksScreenExample() {
             null,
             index = 12U
         )
-        return@TasksScreen linkedMapOf("Fever" to arrayListOf(task))
+        return@TasksScreen linkedMapOf(
+            "Fever" to arrayListOf(task),
+            "Yuo" to arrayListOf(task, task),
+            "sds" to arrayListOf())
     }
 }
