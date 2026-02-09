@@ -13,13 +13,11 @@ import com.example.tasquemanager.ui.theme.horizontal_indent
 import com.example.tasquemanager.ui.theme.vertical_indent
 
 
-@Preview(
-    showBackground = true,
-    widthDp = 412,
-    heightDp = 877
-)
 @Composable
-fun TasksScreen(modifier: Modifier = Modifier) {
+fun TasksScreen(
+    modifier: Modifier = Modifier,
+    dataGetter: () -> LinkedHashMap<String, ArrayList<TasqueDTO>>
+    ) {
     Column(
         modifier = Modifier
             .fillMaxWidth(1f)
@@ -27,13 +25,23 @@ fun TasksScreen(modifier: Modifier = Modifier) {
             .padding(top = vertical_indent)
     ) {
         HeadBar("Tasks")
-        TasksViewer {
-            val task = TasqueDTO(
-                "Something",
-                null,
-                index = 12U
-            )
-            return@TasksViewer linkedMapOf("Fever" to arrayListOf(task))
-        }
+        TasksViewer(tasks = dataGetter())
+    }
+}
+
+@Preview(
+    showBackground = true,
+    widthDp = 412,
+    heightDp = 877
+)
+@Composable
+fun TasksScreenExample() {
+    TasksScreen {
+        val task = TasqueDTO(
+            "Something",
+            null,
+            index = 12U
+        )
+        return@TasksScreen linkedMapOf("Fever" to arrayListOf(task))
     }
 }

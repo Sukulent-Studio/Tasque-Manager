@@ -12,13 +12,13 @@ import com.example.tasquemanager.ui.theme.vertical_indent
 @Composable
 fun TasksViewer(
     modifier: Modifier = Modifier,
-    dataGetter: () -> LinkedHashMap<String, ArrayList<TasqueDTO>>
+    tasks: LinkedHashMap<String, ArrayList<TasqueDTO>>
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(combine_indent),
         modifier = Modifier.padding(top = vertical_indent)
     ){
-        for ((group, tasks) in dataGetter()) {
+        for ((group, tasks) in tasks) {
             item { TasqueGroup(group, tasks) }
         }
     }
