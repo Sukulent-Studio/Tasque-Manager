@@ -13,8 +13,11 @@ import com.example.tasquemanager.ui.theme.vertical_indent
 @Composable
 fun TasksViewer(
     modifier: Modifier = Modifier,
-    tasks: LinkedHashMap<String, ArrayList<TasqueDTO>>
+    tasks: LinkedHashMap<String, ArrayList<TasqueDTO>>?
 ) {
+    if (tasks.isNullOrEmpty()) {
+
+    }
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(combine_indent),
         modifier = Modifier.padding(top = vertical_indent)
@@ -35,7 +38,7 @@ fun TasksViewerExample() {
     val task = TasqueDTO(
         "Something",
         null,
-        index = 12U
+        index = 12
     )
     TasksViewer(
         tasks = linkedMapOf(

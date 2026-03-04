@@ -47,7 +47,7 @@ fun TasqueGroupExample() {
     val task = TasqueDTO(
         "Something",
         null,
-        index = 12U
+        index = 12
     )
     TasqueGroup(
         "Tasks",

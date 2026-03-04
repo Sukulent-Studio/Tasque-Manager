@@ -7,5 +7,5 @@ data class TasqueDTO(
     var content: String? = null,
     var importance: TasqueImportance = TasqueImportance.NONE,
     var status: Boolean = false,
-    var index: UShort
+    var index: Int
 )

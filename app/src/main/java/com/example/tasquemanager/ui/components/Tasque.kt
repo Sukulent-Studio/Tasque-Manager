@@ -40,12 +40,12 @@ fun Tasque(task: TasqueDTO, modifier: Modifier = Modifier) {
 fun TasqueExample() {
     val task = TasqueDTO(
         "Task",
-        index = 23U
+        index = 23
     )
     Tasque(task)
 }
 
 
-fun removeTasque(index: UShort) {
+fun removeTasque(index: Int) {
 
 }
