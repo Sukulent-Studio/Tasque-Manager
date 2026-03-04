@@ -1,0 +1,50 @@
+package com.example.tasquemanager.presentation.feature_tasks.components
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.runtime.Composable
+import com.example.tasquemanager.data.model.remote.TasqueDTO
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.tasquemanager.presentation.theme.combine_indent
+import com.example.tasquemanager.presentation.theme.vertical_indent
+import kotlin.collections.iterator
+
+@Composable
+fun TasksViewer(
+    modifier: Modifier = Modifier,
+    tasks: LinkedHashMap<String, ArrayList<TasqueDTO>>?
+) {
+    if (tasks.isNullOrEmpty()) {
+        return
+    }
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(combine_indent),
+        modifier = Modifier.padding(top = vertical_indent)
+    ){
+        for ((group, tasks) in tasks) {
+            if (tasks.isEmpty()) continue
+            item { TasqueGroup(group, tasks) }
+        }
+    }
+}
+
+@Preview(
+    showBackground = true,
+    widthDp = 412
+)
+@Composable
+fun TasksViewerExample() {
+    val task = TasqueDTO(
+        "Something",
+        null,
+        index = 12
+    )
+    TasksViewer(
+        tasks = linkedMapOf(
+            "Fever" to arrayListOf(task),
+            "Yuo" to arrayListOf(task, task),
+            "sds" to arrayListOf())
+    )
+}
